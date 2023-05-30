@@ -1,5 +1,5 @@
 # Use a specific Node.js version
-FROM node:14-alpine
+FROM node:14-alpine as base
 
 # Set the working directory
 WORKDIR /app
@@ -18,3 +18,11 @@ ENV NODE_ENV=production
 
 # Specify the command to run the application
 CMD ["node", "app.js"]
+
+
+FROM base as test
+#layer test tools and assets on top as optional test stage
+RUN apk add --no-cache apache2-utils
+
+
+FROM base as final
