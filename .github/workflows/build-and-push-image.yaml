@@ -54,14 +54,14 @@ jobs:
         with:
           version: v0.7.0
 
-      - name: Build and Push to GHCR
-        uses: docker/build-push-action@v4
-        with:
-          push: true
-          tags: ghcr.io/jobbee-api:${{ github.run_id }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          platforms: ${{ matrix.platform }}
+#      - name: Build and Push to GHCR
+#        uses: docker/build-push-action@v4
+#        with:
+#          push: true
+#          tags: ghcr.io/jobbee-api:${{ github.run_id }}
+#          cache-from: type=gha
+#          cache-to: type=gha,mode=max
+#          platforms: ${{ matrix.platform }}
 
       - name: Build and push by digest
         id: build
