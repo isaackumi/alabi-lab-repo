@@ -27,6 +27,14 @@ jobs:
       - name: Checkout git repo
         uses: actions/checkout@v3
 
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
       - name: Docker Metadata
         id: meta
         uses: docker/metadata-action@v4
