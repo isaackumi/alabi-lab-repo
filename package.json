@@ -1,15 +1,16 @@
 {
-  "name": "jobee-api",
+  "name": "lab",
   "version": "1.0.0",
-  "description": "This is A Job api",
+  "description": "This is lab",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "prod": "SET NODE_ENV=production && nodemon app.js"
+    "prod": "SET NODE_ENV=production && nodemon app.js",
+    "build": "babel app.js -d build"
   },
   "keywords": [],
-  "author": "Isaac Kumi",
+  "author": "Michael Alabi",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",

@@ -5,7 +5,7 @@ const connectDatabase = () => {
     .connect(
       process.env.NODE_ENV == "development"
         ? process.env.DB_LOCAL_URI
-        : process.env.DB_PROD_URI,
+        : process.env.DB_LOCAL_URI,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

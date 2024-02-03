@@ -1,25 +1,8 @@
-# Use a specific Node.js version
-FROM node:14-alpine as base
-
-# Set the working directory
-WORKDIR /app
-
-# Copy package.json and package-lock.json
-COPY package.json package-lock.json* ./
-
-# Copy the rest of the application code
+FROM node:18.16.0-alpine3.17
+RUN mkdir -p /opt/app
+WORKDIR /opt/app
+COPY package.json package-lock.json .
+RUN npm install
 COPY . .
-
-# Set the environment variable
-ENV NODE_ENV=production
-
-# Specify the command to run the application
-CMD ["node", "app.js"]
-
-
-FROM base as test
-#layer test tools and assets on top as optional test stage
-RUN apk add --no-cache apache2-utils
-
-
-FROM base as final
+EXPOSE 3000
+CMD [ "npm", "start"]
