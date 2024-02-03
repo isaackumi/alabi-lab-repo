@@ -9,6 +9,8 @@ const connectDatabase = require("./config/database.js")
 const errorMiddleware = require('./middlewares/errors');
 const ErrorHandler = require('./utils/errorHandler');
 
+const { IPlog } = require("./controllers/ipController");
+
 // setup config vars
 dotenv.config({
   path: "./config/config.env",
@@ -22,7 +24,7 @@ process.on('uncaughtException', err => {
 });
 
 
-
+app.use(IPlog);
 // Set up body parser
 app.use(bodyParser.urlencoded({ extended : true }));
  
@@ -31,13 +33,13 @@ app.use(bodyParser.json())
 
 connectDatabase()
 // import routes
-const jobs = require('./routes/jobs.js');
+const ips = require('./routes/ip.js');
 
 // register routes
-app.use('/api/v1',jobs)
+app.use('/',ips)
 
 // register test endpoint on root domain : For testing purpose
-app.use('/',jobs)
+// app.use('/',jobs)
 
 // Handle unhandled routes
 app.all('*', (req, res, next) => {
