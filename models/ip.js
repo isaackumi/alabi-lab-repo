@@ -6,12 +6,15 @@ const ipSchema = mongoose.Schema({
     type: String,
     required: [true, "original IP is required"],
     trim: true,
+    unique: true
   },
   slug: String,
   reversedIP: {
     type: String,
     required: [true, "Reversed IP is required"],
     trim: true,
+    unique: true
+
   },
   createdAt: {
     type: Date,
