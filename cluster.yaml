@@ -1,0 +1,18 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: alabi-lab-eks
+  region: us-east-1
+  tags:
+    project: lab
+
+nodeGroups:
+  - name: worker-node
+    instanceType: m5.xlarge
+    desiredCapacity: 3
+  # - name: ng-2
+  #   instanceType: m5.xlarge
+  #   desiredCapacity: 2
+  
