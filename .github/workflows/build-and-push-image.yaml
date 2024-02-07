@@ -83,6 +83,22 @@ jobs:
       - run: |
           ls 
           cat values.yaml
+          NEW_TAG=${{ steps.release.outputs.version }}
+          echo $NEW_TAG
+
+      - name: Update Tag in Values.yaml
+        run: |
+          NEW_TAG=${{ steps.release.outputs.version }}
+          sed -i 's/tag: .*/tag: '"$NEW_TAG"'/g' .values.yaml
+
+      - uses: azure/setup-helm@v3
+        with:
+          token: ${{ secrets.TOKEN_GITHUB }} 
+        id: install
 
       - name: Update kube config
         run: aws eks update-kubeconfig --name lab-cluster --region us-east-1
+
+      - name: Apply Changes to EKS cluster
+        run: |
+          helm install -f values.yaml app .
