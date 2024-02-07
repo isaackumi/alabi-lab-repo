@@ -89,7 +89,7 @@ jobs:
       - name: Update Tag in Values.yaml
         run: |
           NEW_TAG=${{ steps.release.outputs.version }}
-          sed -i 's/tag: .*/tag: '"$NEW_TAG"'/g' .values.yaml
+          sed -i 's/tag: .*/tag: '"$NEW_TAG"'/g' ./values.yaml
 
       - uses: azure/setup-helm@v3
         with:
