@@ -1,3 +1,4 @@
+infra/* filter=lfs diff=lfs merge=lfs -text
 /node_modules/.package-lock.json filter=lfs diff=lfs merge=lfs -text
 /node_modules/@babel/core/lib/vendor/import-meta-resolve.js.map filter=lfs diff=lfs merge=lfs -text
 /node_modules/@babel/parser/lib/index.js filter=lfs diff=lfs merge=lfs -text
