@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const app = express();
 
 app.use(morgan('combined'));
-const connectDatabase = require("./config/database.js")
+// const connectDatabase = require("./config/database.js")
 const errorMiddleware = require('./middlewares/errors');
 const ErrorHandler = require('./utils/errorHandler');
 
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended : true }));
 // parse application/json
 app.use(bodyParser.json())
 
-connectDatabase()
+// connectDatabase()
 // import routes
 const ips = require('./routes/ip.js');
 

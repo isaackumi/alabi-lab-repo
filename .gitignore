@@ -1,3 +1,5 @@
 **/node_modules
 **/.idea
 **/config.env
+**/infra
+.DS_Store

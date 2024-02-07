@@ -1,28 +1,26 @@
 version: '3.1'
 
 services:
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-    volumes:
-      - mongo-data:/data/db
-    ports:
-      - 27017:27017
+  # mongo:
+  #   image: mongo
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: password
+  #   volumes:
+  #     - mongo-data:/data/db
+  #   ports:
+  #     - 27017:27017
 
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    depends_on:
-      - mongo
     ports:
       - 3000:3000
     volumes:
       - app-data:/app/data
 
 volumes:
-  mongo-data:
+  # mongo-data:
   app-data:

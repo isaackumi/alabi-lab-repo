@@ -40,14 +40,21 @@ exports.IPlog = catchAsyncErrors(async (req, res, next) => {
   console.log(`Original IP: ${originalIP}`);
   console.log(`Reversed IP: ${reversedIP}`);
 
+
+   res.status(200).json({
+    success: true,
+    originalIP: originalIP ,
+    reversedIP: reversedIP,
+  });
+
  
-  try {
-    await IP.create({ originalIP, reversedIP });
-    // await IPModel.create({ originalIP, reversedIP });
-    console.log('IP addresses saved to MongoDB');
-  } catch (error) {
-    console.error('Error saving IP addresses to MongoDB:', error);
-  }
+  // try {
+  //   await IP.create({ originalIP, reversedIP });
+  //   // await IPModel.create({ originalIP, reversedIP });
+  //   console.log('IP addresses saved to MongoDB');
+  // } catch (error) {
+  //   console.error('Error saving IP addresses to MongoDB:', error);
+  // }
 
   next();
 
