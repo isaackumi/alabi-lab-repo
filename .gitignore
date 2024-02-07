@@ -3,3 +3,4 @@
 **/config.env
 **/infra
 .DS_Store
+node_modules/
