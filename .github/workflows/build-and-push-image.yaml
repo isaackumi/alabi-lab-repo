@@ -101,3 +101,8 @@ jobs:
       - name: Apply Changes to EKS cluster
         run: |
           helm install -f values.yaml app .
+
+      - name: Apply Changes to EKS cluster
+        run: |
+          kubectl get all -A
+          kubectl get svc
