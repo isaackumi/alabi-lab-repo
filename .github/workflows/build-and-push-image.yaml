@@ -94,7 +94,6 @@ jobs:
       - uses: azure/setup-helm@v3
         with:
           token: ${{ secrets.TOKEN_GITHUB }} 
-        id: install
 
       - name: Update kube config
         run: aws eks update-kubeconfig --name lab-cluster --region us-east-1
