@@ -68,6 +68,21 @@ jobs:
       - name: Push Docker Image to Docker Hub
         run: docker push isaackumi/alabi-lab:${{ steps.release.outputs.version }}
 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Checkout Helm Repository
+        uses: actions/checkout@v2
+        with:
+          repository: isaackumi/alabi-helm-chart
+
+      - run: |
+          ls 
+          cat values.yaml
+
       - name: Update kube config
-        if:  failure()
         run: aws eks update-kubeconfig --name lab-cluster --region us-east-1
